@@ -1,12 +1,22 @@
-use std::env;
+use clap::Parser;
 
-fn main() -> Result<(), Box<dyn Error>> {
-    
-    dotenvy::dotenv()?;
+/// Simple program to greet a person
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
+    /// Name of the person to greet
+    #[arg(short, long)]
+    name: String,
 
-    for (key, value) in env::vars() {
-        println!("{key}: {value}");
+    /// Number of times to greet
+    #[arg(short, long, default_value_t = 1)]
+    count: u8,
+}
+
+fn main() {
+    let args = Args::parse();
+
+    for _ in 0..args.count {
+        println!("Hello {}!", args.name);
     }
-
-    Ok()
 }
