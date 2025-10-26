@@ -1,8 +1,0 @@
-[package]
-name = "mcsrranked-cli"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-clap = { version = "4.5.49", features = ["derive"] }
-dotenvy = "0.15.7"
